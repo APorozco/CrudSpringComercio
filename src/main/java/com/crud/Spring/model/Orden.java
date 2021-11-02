@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,15 +22,15 @@ public class Orden {
 	private Date fechaRecibida;
 
 	private double total;
-	
+
 	@ManyToOne
 	private Usuario usuario;
 	
-	@OneToMany(mappedBy = "orden")
-	private List<DetalleOrden> detalle;
-	
+	@OneToOne(mappedBy = "orden")
+	private DetalleOrden detalle;
+
 	public Orden() {
-	
+
 	}
 
 	public Orden(Integer id, String numero, Date fechaCreacion, Date fechaRecibida, double total) {
@@ -81,7 +81,6 @@ public class Orden {
 	public void setTotal(double total) {
 		this.total = total;
 	}
-	
 
 	public Usuario getUsuario() {
 		return usuario;
@@ -90,21 +89,11 @@ public class Orden {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
-
-	public List<DetalleOrden> getDetalle() {
-		return detalle;
-	}
-
-	public void setDetalle(List<DetalleOrden> detalle) {
-		this.detalle = detalle;
-	}
 
 	@Override
 	public String toString() {
 		return "Orden [id=" + id + ", numero=" + numero + ", fechaCreacion=" + fechaCreacion + ", fechaRecibida="
 				+ fechaRecibida + ", total=" + total + "]";
 	}
-	
 
 }
