@@ -49,11 +49,17 @@ public class ProductoController {
 
 		return "productos/edit";
 	}
-	
+
 	@PostMapping("/update")
-	public String update(Producto p)
-	{
+	public String update(Producto p) {
 		pro.update(p);
 		return "redirect:/productos";
+	}
+
+	@GetMapping("/delete/{id}")
+	public String delete(@PathVariable Integer id) {
+		pro.delete(id);
+		return "redirect:/productos";
+
 	}
 }
