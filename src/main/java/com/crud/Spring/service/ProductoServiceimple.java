@@ -1,5 +1,6 @@
 package com.crud.Spring.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,12 @@ public class ProductoServiceimple implements ProductoService {
 	public void delete(Integer id) {
 		prod_repo.deleteById(id);
 		
+	}
+
+	@Override
+	public List<Producto> listar() {
+		// TODO Auto-generated method stub
+		return prod_repo.findAll();
 	}
 
 }
